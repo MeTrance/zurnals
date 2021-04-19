@@ -19,4 +19,8 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])/*->name('home')*/;
+//Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])/*->name('home')*/;
+
+Route::get('/', [\App\Http\Controllers\TablesController::class, 'index']);
+Route::get('/{table}', [\App\Http\Controllers\TablesController::class, 'show']);
+Route::resource('tables', \App\Http\Controllers\TablesController::class, ['only' => ['create', 'edit', 'update', 'destroy']]);
