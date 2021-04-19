@@ -31,9 +31,11 @@
                 </tr>
 
             @endforeach
+
         @else
             <p>No data</p>
         @endif
         </tbody>
     </table>
 </div>
+{{$tabledata->links()}}
