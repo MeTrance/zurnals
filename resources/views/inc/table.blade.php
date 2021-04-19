@@ -12,6 +12,7 @@
             <th scope="col">Ierīces tips</th>
             <th scope="col">Problēmas veids</th>
             <th scope="col">Piezīmes</th>
+            <th scope="col"></th>
         </tr>
         </thead>
         <tbody>
@@ -28,6 +29,13 @@
                     <td>{{$data->ierīces_tips}}</td>
                     <td>{{$data->problēmas_veids}}</td>
                     <td>{{$data->piezīmes}}</td>
+                    <td><a href="/tables/{{$data->id}}/edit" class="btn btn-primary">Rediģēt</a></td>
+                    <td>
+                        {!! Form::open(['action' => [[\App\Http\Controllers\TablesController::class, 'destroy'], $data->id], 'method' => 'POST'])!!}
+                            {!!Form::hidden('_method', 'DELETE')!!}
+                            {!!Form::submit('Izdzēst', ['class' => 'btn btn-danger'])!!}
+                        {!!Form::close()!!}
+                    </td>
                 </tr>
 
             @endforeach
