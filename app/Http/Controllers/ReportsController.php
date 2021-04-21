@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Table;
+use App\Models\Report;
 use Facade\Ignition\Tabs\Tab;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 
-class TablesController extends Controller
+class ReportsController extends Controller
 {
     public function __construct()
     {
@@ -20,7 +21,7 @@ class TablesController extends Controller
      */
     public function index()
     {
-        $tabledata = Table::orderBy('ziņojuma_datums', 'desc')->paginate(30);
+        $tabledata = Report::orderBy('ziņojuma_datums', 'desc')->paginate(30);
         return view('index')->with('tabledata', $tabledata);
     }
 
@@ -48,7 +49,7 @@ class TablesController extends Controller
 
         //Izveidot ierakstu
 
-        $tabledata = new Table;
+        $tabledata = new Report;
         $tabledata->ziņojuma_datums = $request->input('ziņojuma_datums');
         $tabledata->laiks = $request->input('laiks');
         //$tabledata->nedēļa = $request->input('nedēļa');
@@ -72,7 +73,7 @@ class TablesController extends Controller
      */
     public function show($id)
     {
-        $tabledata = Table::find($id);
+        $tabledata = Report::find($id);
         return view('table.show')->with('data', $tabledata);
     }
 
@@ -84,7 +85,7 @@ class TablesController extends Controller
      */
     public function edit($id)
     {
-        $tabledata = Table::find($id);
+        $tabledata = Report::find($id);
         return view('table.edit')->with('data', $tabledata);
     }
 
@@ -103,7 +104,7 @@ class TablesController extends Controller
 
         //Izveidot ierakstu
 
-        $tabledata = Table::find($id);
+        $tabledata = Report::find($id);
         $tabledata->ziņojuma_datums = $request->input('ziņojuma_datums');
         $tabledata->laiks = $request->input('laiks');
         //$tabledata->nedēļa = $request->input('nedēļa');
@@ -127,7 +128,7 @@ class TablesController extends Controller
      */
     public function destroy($id)
     {
-        $tabledata = Table::find($id);
+        $tabledata = Report::find($id);
         $tabledata->delete();
 
         return redirect('/')->with('success', 'Ieraksts izdzēsts');

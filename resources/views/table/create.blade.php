@@ -4,7 +4,7 @@
 
     <div class="container">
         <h3 style="margin-top: 20px">Jauns ieraksts</h3>
-    {!! Form::open(['action' => [[\App\Http\Controllers\TablesController::class, 'store']], 'method' => 'POST'])!!}
+    {!! Form::open(['action' => [[\App\Http\Controllers\ReportsController::class, 'store']], 'method' => 'POST'])!!}
 
         <div class="form-group">
             {{Form::label('ziņojuma_datums', 'Ziņojuma datums')}}

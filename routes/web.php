@@ -21,8 +21,8 @@ Auth::routes();
 
 //Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])/*->name('home')*/;
 
-Route::get('/', [\App\Http\Controllers\TablesController::class, 'index']);
+Route::get('/', [\App\Http\Controllers\ReportsController::class, 'index']);
 //Route::post('/new', [\App\Http\Controllers\TablesController::class, 'store'])->name('new');
 //Route::match(['put', 'patch'],'tables/{id}', [\App\Http\Controllers\TablesController::class, 'update']);
-Route::get('/{table}', [\App\Http\Controllers\TablesController::class, 'show']);
-Route::resource('tables', \App\Http\Controllers\TablesController::class, ['only' => ['create', 'edit', 'store', 'update', 'destroy']]);
+Route::get('/{table}', [\App\Http\Controllers\ReportsController::class, 'show']);
+Route::resource('tables', \App\Http\Controllers\ReportsController::class, ['only' => ['create', 'edit', 'store', 'update', 'destroy']]);

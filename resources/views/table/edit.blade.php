@@ -4,7 +4,7 @@
 
     <div class="container">
         <h3 style="margin-top: 20px">Rediģēt ierakstu</h3>
-        {!! Form::open(['action' => [[\App\Http\Controllers\TablesController::class, 'update'], $data->id], 'method' => 'POST'])!!}
+        {!! Form::open(['action' => [[\App\Http\Controllers\ReportsController::class, 'update'], $data->id], 'method' => 'POST'])!!}
 
         <!-- Kā diez ievietot iepriekšējos laika datus -->
         <div class="form-group">
