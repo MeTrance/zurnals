@@ -15,40 +15,36 @@
             {{Form::time('laiks', Carbon\Carbon::now()->format('H:i'), ['class' => 'form-control'])}}
         </div>
         <div class="form-group">
-            {{Form::label('nedēļa', 'Nedēļa')}}
-            {{Form::text('nedēļa', '', ['class' => 'form-control', 'placeholder' => 'asd'])}}
-        </div>
-        <div class="form-group">
             {{Form::label('atskaitošā_persona', 'Atskaitošā persona')}}
-            {{Form::text('atskaitošā_persona', '', ['class' => 'form-control', 'placeholder' => 'asd'])}}
+            {{Form::text('atskaitošā_persona', Auth::user()->name, ['class' => 'form-control', 'placeholder' => ''])}}
         </div>
         <div class="form-group">
             {{Form::label('avots', 'Avots')}}
-            {{Form::text('avots', '', ['class' => 'form-control', 'placeholder' => 'asd'])}}
+            {{Form::text('avots', '', ['class' => 'form-control', 'placeholder' => ''])}}
         </div>
         <div class="form-group">
             {{Form::label('ziņojuma_apraksts', 'Ziņojuma apraksts')}}
-            {{Form::text('ziņojuma_apraksts', '', ['class' => 'form-control', 'placeholder' => 'asd'])}}
+            {{Form::text('ziņojuma_apraksts', '', ['class' => 'form-control', 'placeholder' => ''])}}
         </div>
         <div class="form-group">
             {{Form::label('atrašanās_vieta', 'Atrašanās vieta')}}
-            {{Form::text('atrašanās_vieta', '', ['class' => 'form-control', 'placeholder' => 'asd'])}}
+            {{Form::text('atrašanās_vieta', '', ['class' => 'form-control', 'placeholder' => ''])}}
         </div>
         <div class="form-group">
             {{Form::label('ierīces_tips', 'Ierīces tips')}}
-            {{Form::text('ierīces_tips', '', ['class' => 'form-control', 'placeholder' => 'asd'])}}
+            {{Form::text('ierīces_tips', '', ['class' => 'form-control', 'placeholder' => ''])}}
         </div>
         <div class="form-group">
             {{Form::label('problēmas_veids', 'Problēmas veids')}}
-            {{Form::text('problēmas_veids', '', ['class' => 'form-control', 'placeholder' => 'asd'])}}
+            {{Form::text('problēmas_veids', '', ['class' => 'form-control', 'placeholder' => ''])}}
         </div>
         <div class="form-group">
             {{Form::label('piezīmes', 'Piezīmes')}}
-            {{Form::text('piezīmes', '', ['class' => 'form-control', 'placeholder' => 'asd'])}}
+            {{Form::text('piezīmes', '', ['class' => 'form-control', 'placeholder' => ''])}}
         </div>
         {{Form::submit('Saglabāt', ['class' => 'btn btn-primary'])}}
     {!! Form::close() !!}
     </div>
 @endsection
-<!--  Iespējams ir izmantot laravel collective drop down list no db /// text editor lielajiem field ? -->
+
 

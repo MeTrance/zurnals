@@ -20,8 +20,8 @@
             @foreach($tabledata as $data)
                 <tr>
                     <td><a href="/{{$data->id}}">{{$data->ziņojuma_datums}}</a></td>
-                    <td>{{$data->laiks}}</td>
-                    <td>{{$data->nedēļa}}</td>
+                    <td>{{date('H:i',strtotime($data->laiks))}}</td>
+                    <td>{{date('W',strtotime($data->ziņojuma_datums))}}</td>
                     <td>{{$data->atskaitošā_persona}}</td>
                     <td>{{$data->avots}}</td>
                     <td>{{$data->ziņojuma_apraksts}}</td>

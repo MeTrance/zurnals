@@ -16,10 +16,6 @@
             {{Form::time('laiks', Carbon\Carbon::now()->format('H:i'), ['class' => 'form-control'])}}
         </div>
         <div class="form-group">
-            {{Form::label('nedēļa', 'Nedēļa')}}
-            {{Form::text('nedēļa', $data->nedēļa, ['class' => 'form-control', 'placeholder' => 'asd'])}}
-        </div>
-        <div class="form-group">
             {{Form::label('atskaitošā_persona', 'Atskaitošā persona')}}
             {{Form::text('atskaitošā_persona', $data->atskaitošā_persona, ['class' => 'form-control', 'placeholder' => 'asd'])}}
         </div>

@@ -10,11 +10,11 @@
             </tr>
             <tr>
                 <th class="alert-secondary">Laiks</th>
-                <th>{{$data->laiks}}</th>
+                <th>{{date('H:i',strtotime($data->laiks))}}</th>
             </tr>
             <tr>
                 <th class="alert-secondary">Nedēļa</th>
-                <th>{{$data->nedēļa}}</th>
+                <th>{{date('W',strtotime($data->ziņojuma_datums))}}</th>
             </tr>
             <tr>
                 <th class="alert-secondary">Atskaitošā persona</th>
