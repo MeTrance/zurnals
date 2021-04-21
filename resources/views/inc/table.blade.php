@@ -19,7 +19,7 @@
         @if(count($tabledata) > 0)
             @foreach($tabledata as $data)
                 <tr>
-                    <td><a href="/{{$data->id}}">{{$data->ziņojuma_datums}}</a></td>
+                    <td><a href="/report/{{$data->id}}">{{$data->ziņojuma_datums}}</a></td>
                     <td>{{date('H:i',strtotime($data->laiks))}}</td>
                     <td>{{date('W',strtotime($data->ziņojuma_datums))}}</td>
                     <td>{{$data->atskaitošā_persona}}</td>
@@ -29,7 +29,7 @@
                     <td>{{$data->ierīces_tips}}</td>
                     <td>{{$data->problēmas_veids}}</td>
                     <td>{{$data->piezīmes}}</td>
-                    <td><a href="/tables/{{$data->id}}/edit" class="btn btn-primary">Rediģēt</a></td>
+                    <td><a href="/report/{{$data->id}}/edit" class="btn btn-primary">Rediģēt</a></td>
                     <td>
                         {!! Form::open(['action' => [[\App\Http\Controllers\ReportsController::class, 'destroy'], $data->id], 'method' => 'POST'])!!}
                             {!!Form::hidden('_method', 'DELETE')!!}

@@ -11,7 +11,7 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('tables.create')}}">Pievienot ierakstu</a>
+                    <a class="nav-link" href="{{route('report.create')}}">Pievienot ierakstu</a>
                 </li>
             </ul>
 

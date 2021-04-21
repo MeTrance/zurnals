@@ -32,7 +32,7 @@ class ReportsController extends Controller
      */
     public function create()
     {
-        return view('table.create');
+        return view('report.create');
     }
 
     /**
@@ -74,7 +74,7 @@ class ReportsController extends Controller
     public function show($id)
     {
         $tabledata = Report::find($id);
-        return view('table.show')->with('data', $tabledata);
+        return view('report.show')->with('data', $tabledata);
     }
 
     /**
@@ -86,7 +86,7 @@ class ReportsController extends Controller
     public function edit($id)
     {
         $tabledata = Report::find($id);
-        return view('table.edit')->with('data', $tabledata);
+        return view('report.edit')->with('data', $tabledata);
     }
 
     /**
