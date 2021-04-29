@@ -20,7 +20,7 @@
         </div>
         <div class="form-group">
             {{Form::label('avots', 'Avots')}}
-            {{Form::text('avots', '', ['class' => 'form-control', 'placeholder' => ''])}}
+            {{ Form::select('avots', \App\Models\Source::all()->pluck('name', 'id')->toArray(), null,['class'=>'form-control'])}}
         </div>
         <div class="form-group">
             {{Form::label('ziņojuma_apraksts', 'Ziņojuma apraksts')}}
@@ -28,15 +28,17 @@
         </div>
         <div class="form-group">
             {{Form::label('atrašanās_vieta', 'Atrašanās vieta')}}
-            {{Form::text('atrašanās_vieta', '', ['class' => 'form-control', 'placeholder' => ''])}}
+            {{ Form::select('atrašanās_vieta', \App\Models\Location::all()->pluck('name', 'id')->toArray(), null,['class'=>'form-control'])}}
         </div>
+
+
         <div class="form-group">
             {{Form::label('ierīces_tips', 'Ierīces tips')}}
-            {{Form::text('ierīces_tips', '', ['class' => 'form-control', 'placeholder' => ''])}}
+            {{ Form::select('ierīces_tips', \App\Models\Device::all()->pluck('name', 'id')->toArray(), null,['class'=>'form-control'])}}
         </div>
         <div class="form-group">
             {{Form::label('problēmas_veids', 'Problēmas veids')}}
-            {{Form::text('problēmas_veids', '', ['class' => 'form-control', 'placeholder' => ''])}}
+            {{ Form::select('problēmas_veids', \App\Models\Issue::all()->pluck('name', 'id')->toArray(), null,['class'=>'form-control'])}}
         </div>
         <div class="form-group">
             {{Form::label('piezīmes', 'Piezīmes')}}

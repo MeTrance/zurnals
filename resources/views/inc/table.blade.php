@@ -13,13 +13,14 @@
             <th scope="col">Problēmas veids</th>
             <th scope="col">Piezīmes</th>
             <th scope="col"></th>
+            <th scope="col"></th>
         </tr>
         </thead>
         <tbody>
         @if(count($tabledata) > 0)
             @foreach($tabledata as $data)
                 <tr>
-                    <td><a href="/report/{{$data->id}}">{{$data->ziņojuma_datums}}</a></td>
+                    <td><a href="/reports/{{$data->id}}">{{$data->ziņojuma_datums}}</a></td>
                     <td>{{date('H:i',strtotime($data->laiks))}}</td>
                     <td>{{date('W',strtotime($data->ziņojuma_datums))}}</td>
                     <td>{{$data->atskaitošā_persona}}</td>
@@ -29,7 +30,10 @@
                     <td>{{$data->ierīces_tips}}</td>
                     <td>{{$data->problēmas_veids}}</td>
                     <td>{{$data->piezīmes}}</td>
-                    <td><a href="/report/{{$data->id}}/edit" class="btn btn-primary">Rediģēt</a></td>
+                    <td><a href="/repairs/{{$data->id}}" class="btn btn-primary">Rīcība</a>
+
+                    </td>
+                    <td><a href="/reports/{{$data->id}}/edit" class="btn btn-primary">Rediģēt</a></td>
                     <td>
                         {!! Form::open(['action' => [[\App\Http\Controllers\ReportsController::class, 'destroy'], $data->id], 'method' => 'POST'])!!}
                             {!!Form::hidden('_method', 'DELETE')!!}

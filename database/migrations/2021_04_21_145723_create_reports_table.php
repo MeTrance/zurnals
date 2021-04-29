@@ -25,7 +25,6 @@ class CreateReportsTable extends Migration
             $table->char('problēmas_veids');
             $table->char('piezīmes');
             $table->timestamps();
-
         });
     }
 

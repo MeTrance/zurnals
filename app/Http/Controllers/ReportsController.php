@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Repair;
 use App\Models\Report;
 use Facade\Ignition\Tabs\Tab;
 use Illuminate\Database\Eloquent\Model;
@@ -21,7 +22,9 @@ class ReportsController extends Controller
      */
     public function index()
     {
+
         $tabledata = Report::orderBy('ziņojuma_datums', 'desc')->paginate(30);
+
         return view('index')->with('tabledata', $tabledata);
     }
 
@@ -32,7 +35,7 @@ class ReportsController extends Controller
      */
     public function create()
     {
-        return view('report.create');
+        return view('reports.create');
     }
 
     /**
@@ -52,7 +55,6 @@ class ReportsController extends Controller
         $tabledata = new Report;
         $tabledata->ziņojuma_datums = $request->input('ziņojuma_datums');
         $tabledata->laiks = $request->input('laiks');
-        //$tabledata->nedēļa = $request->input('nedēļa');
         $tabledata->atskaitošā_persona = $request->input('atskaitošā_persona');
         $tabledata->avots = $request->input('avots');
         $tabledata->ziņojuma_apraksts = $request->input('ziņojuma_apraksts');
@@ -60,9 +62,15 @@ class ReportsController extends Controller
         $tabledata->ierīces_tips = $request->input('ierīces_tips');
         $tabledata->problēmas_veids = $request->input('problēmas_veids');
         $tabledata->piezīmes = $request->input('piezīmes');
+
+        //$repairdata = new Repair;
+        //$repairdata->report_id = Report::GetNextId();
+
         $tabledata->save();
+        //$repairdata->save();
 
         return redirect('/')->with('success', 'Ieraksts izveidots');
+
     }
 
     /**
@@ -73,8 +81,9 @@ class ReportsController extends Controller
      */
     public function show($id)
     {
+        $repair_id = Report::find('report_id');
         $tabledata = Report::find($id);
-        return view('report.show')->with('data', $tabledata);
+        return view('reports.show')->with('data', $tabledata, $repair_id);
     }
 
     /**
@@ -86,7 +95,7 @@ class ReportsController extends Controller
     public function edit($id)
     {
         $tabledata = Report::find($id);
-        return view('report.edit')->with('data', $tabledata);
+        return view('reports.edit')->with('data', $tabledata);
     }
 
     /**

@@ -13,16 +13,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
-
 Auth::routes();
 
-//Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])/*->name('home')*/;
+// Admin Route
+Route::get('/admin', [\App\Http\Controllers\PagesController::class, 'admin'])->name('admin');
 
+// Report Routes
 Route::get('/', [\App\Http\Controllers\ReportsController::class, 'index']);
-//Route::post('/new', [\App\Http\Controllers\TablesController::class, 'store'])->name('new');
-//Route::match(['put', 'patch'],'tables/{id}', [\App\Http\Controllers\TablesController::class, 'update']);
-//Route::get('/{report}', [\App\Http\Controllers\ReportsController::class, 'show']);
-Route::resource('report', \App\Http\Controllers\ReportsController::class, ['only' => ['create', 'edit', 'show', 'store', 'update', 'destroy']]);
+Route::resource('reports', \App\Http\Controllers\ReportsController::class, ['only' => ['create', 'edit', 'show', 'store', 'update', 'destroy']]);
+
+// Repair Routes
+
+//Route::resource('reports.repairs', \App\Http\Controllers\RepairsController::class);
+
+
+Route::resource('repairs', \App\Http\Controllers\RepairsController::class, ['except' => ['index', 'show', 'create', 'store']]);
+Route::post('/repairs', [\App\Http\Controllers\RepairsController::class, 'store']);
+Route::get('/repairs/{report_id}/create', [\App\Http\Controllers\RepairsController::class, 'create']);
+Route::get('/repairs/{repairs}/show', [\App\Http\Controllers\RepairsController::class, 'show'])->name('repairs.show');
+Route::get('/repairs/{report_id}', [\App\Http\Controllers\RepairsController::class, 'index'])->name('repairs.index');
+
+// Vēlāk nested

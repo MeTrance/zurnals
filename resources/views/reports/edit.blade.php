@@ -9,11 +9,11 @@
         <!-- Kā diez ievietot iepriekšējos laika datus -->
         <div class="form-group">
             {{Form::label('ziņojuma_datums', 'Ziņojuma datums')}}
-            {{Form::date('ziņojuma_datums', \Carbon\Carbon::now(), ['class' => 'form-control'])}}
+            {{Form::date('ziņojuma_datums', $data->ziņojuma_datums, ['class' => 'form-control'])}}
         </div>
         <div class="form-group">
             {{Form::label('laiks', 'Laiks')}}
-            {{Form::time('laiks', Carbon\Carbon::now()->format('H:i'), ['class' => 'form-control'])}}
+            {{Form::time('laiks', date('H:i',strtotime($data->laiks)), ['class' => 'form-control'])}}
         </div>
         <div class="form-group">
             {{Form::label('atskaitošā_persona', 'Atskaitošā persona')}}
@@ -47,7 +47,6 @@
         {{Form::submit('Saglabāt', ['class' => 'btn btn-primary'])}}
         {!! Form::close() !!}
     </div>
-    <p>Nestrādā previous laiks/datums</p>
 @endsection
 <!--  Iespējams ir izmantot laravel collective drop down list no db /// text editor lielajiem field ? -->
 
