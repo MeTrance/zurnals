@@ -20,25 +20,31 @@
         @if(count($tabledata) > 0)
             @foreach($tabledata as $data)
                 <tr>
-                    <td><a href="/reports/{{$data->id}}">{{$data->ziņojuma_datums}}</a></td>
-                    <td>{{date('H:i',strtotime($data->laiks))}}</td>
-                    <td>{{date('W',strtotime($data->ziņojuma_datums))}}</td>
-                    <td>{{$data->atskaitošā_persona}}</td>
-                    <td>{{$data->avots}}</td>
-                    <td>{{$data->ziņojuma_apraksts}}</td>
-                    <td>{{$data->atrašanās_vieta}}</td>
-                    <td>{{$data->ierīces_tips}}</td>
-                    <td>{{$data->problēmas_veids}}</td>
-                    <td>{{$data->piezīmes}}</td>
+                    <td><a href="/reports/{{$data->id}}">{{$data->date}}</a></td>
+                    <td>{{date('H:i',strtotime($data->time))}}</td>
+                    <td>{{date('W',strtotime($data->date))}}</td>
+                    <td>{{$data->getUser->name}}</td>
+                    <td>{{$data->getSource->name}}</td>
+                    <td>{{$data->txt}}</td>
+                    <td>{{$data->getLocation->name}}</td>
+                    <td>{{$data->getDevice->name}}</td>
+                    <td>{{$data->getIssue->name}}</td>
+                    <td>{{$data->note}}</td>
                     <td><a href="/repairs/{{$data->id}}" class="btn btn-primary">Rīcība</a>
 
                     </td>
                     <td><a href="/reports/{{$data->id}}/edit" class="btn btn-primary">Rediģēt</a></td>
                     <td>
-                        {!! Form::open(['action' => [[\App\Http\Controllers\ReportsController::class, 'destroy'], $data->id], 'method' => 'POST'])!!}
+
+                        @if($data->getRepair->count() == 0)
+                            {!! Form::open(['action' => [[\App\Http\Controllers\ReportsController::class, 'destroy'], $data->id], 'method' => 'POST'])!!}
                             {!!Form::hidden('_method', 'DELETE')!!}
                             {!!Form::submit('Izdzēst', ['class' => 'btn btn-danger'])!!}
-                        {!!Form::close()!!}
+                            {!!Form::close()!!}
+                        @else
+
+                        @endif
+
                     </td>
                 </tr>
 

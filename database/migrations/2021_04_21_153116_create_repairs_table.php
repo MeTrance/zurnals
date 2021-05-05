@@ -16,13 +16,12 @@ class CreateRepairsTable extends Migration
         Schema::create('repairs', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('report_id')->nullable(true);
-            $table->char('veiktās_darbības')->nullable(true);
-            $table->char('stāvoklis')->nullable(true);
-            $table->date('rīcības_datums')->nullable(true);
-            $table->time('rīcības_laiks')->nullable(true);
-            $table->char('darbības_persona')->nullable(true);
-            $table->char('piezīmes')->nullable(true);
-            $table->timestamps();
+            $table->char('txt')->nullable(true);
+            $table->unsignedBigInteger('state_id')->nullable(true);
+            $table->date('date')->nullable(true);
+            $table->time('time')->nullable(true);
+            $table->unsignedBigInteger('person_id')->nullable(true);
+            $table->char('note')->nullable(true);
 
             // Indexejam report, lai atrak querry
             $table->index('report_id');

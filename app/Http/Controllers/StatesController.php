@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\State;
 use Illuminate\Http\Request;
 
 class StatesController extends Controller
@@ -13,7 +14,9 @@ class StatesController extends Controller
      */
     public function index()
     {
-        //
+        $statesdata = State::orderBy('id', 'desc')->paginate(30);
+
+        return view('states.index')->with('statesdata', $statesdata);
     }
 
     /**
@@ -23,7 +26,7 @@ class StatesController extends Controller
      */
     public function create()
     {
-        //
+        return view('states.create');
     }
 
     /**
@@ -34,7 +37,15 @@ class StatesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+        ]);
+
+        $statesdata = new State;
+        $statesdata->name = $request->input('name');
+        $statesdata->save();
+
+        return redirect(route('states.index'))->with('success', 'Ieraksts izveidots');
     }
 
     /**
@@ -56,7 +67,8 @@ class StatesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $statesdata = State::find($id);
+        return view('states.edit')->with('statesdata', $statesdata);
     }
 
     /**
@@ -68,7 +80,17 @@ class StatesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+        ]);
+
+        //Izveidot ierakstu
+
+        $statesdata = State::find($id);
+        $statesdata->name = $request->input('name');
+        $statesdata->save();
+
+        return redirect(route('states.index'))->with('success', 'Ieraksts atjaunināts');
     }
 
     /**
@@ -79,6 +101,9 @@ class StatesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $statesdata = State::find($id);
+        $statesdata->delete();
+
+        return redirect(route('states.index'))->with('success', 'Ieraksts izdzēsts');
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Location;
 use Illuminate\Http\Request;
 
 class LocationsController extends Controller
@@ -13,7 +14,9 @@ class LocationsController extends Controller
      */
     public function index()
     {
-        //
+        $locationsdata = Location::orderBy('id', 'desc')->paginate(30);
+
+        return view('locations.index')->with('locationsdata', $locationsdata);
     }
 
     /**
@@ -23,7 +26,7 @@ class LocationsController extends Controller
      */
     public function create()
     {
-        //
+        return view('locations.create');
     }
 
     /**
@@ -34,7 +37,15 @@ class LocationsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+        ]);
+
+        $locationsdata = new Location;
+        $locationsdata->name = $request->input('name');
+        $locationsdata->save();
+
+        return redirect(route('locations.index'))->with('success', 'Ieraksts izveidots');
     }
 
     /**
@@ -56,7 +67,8 @@ class LocationsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $locationsdata = Location::find($id);
+        return view('locations.edit')->with('locationsdata', $locationsdata);
     }
 
     /**
@@ -68,7 +80,17 @@ class LocationsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+        ]);
+
+        //Izveidot ierakstu
+
+        $locationsdata = Location::find($id);
+        $locationsdata->name = $request->input('name');
+        $locationsdata->save();
+
+        return redirect(route('locations.index'))->with('success', 'Ieraksts atjaunināts');
     }
 
     /**
@@ -79,6 +101,9 @@ class LocationsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $locationsdata = Location::find($id);
+        $locationsdata->delete();
+
+        return redirect(route('locations.index'))->with('success', 'Ieraksts izdzēsts');
     }
 }

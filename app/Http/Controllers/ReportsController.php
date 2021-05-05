@@ -20,10 +20,11 @@ class ReportsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
     public function index()
     {
-
-        $tabledata = Report::orderBy('ziņojuma_datums', 'desc')->paginate(30);
+        $tabledata = Report::orderBy('date', 'desc')->paginate(30);
 
         return view('index')->with('tabledata', $tabledata);
     }
@@ -47,21 +48,21 @@ class ReportsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'ziņojuma_datums' => 'required',
+            'date' => 'required',
         ]);
 
         //Izveidot ierakstu
 
         $tabledata = new Report;
-        $tabledata->ziņojuma_datums = $request->input('ziņojuma_datums');
-        $tabledata->laiks = $request->input('laiks');
-        $tabledata->atskaitošā_persona = $request->input('atskaitošā_persona');
-        $tabledata->avots = $request->input('avots');
-        $tabledata->ziņojuma_apraksts = $request->input('ziņojuma_apraksts');
-        $tabledata->atrašanās_vieta = $request->input('atrašanās_vieta');
-        $tabledata->ierīces_tips = $request->input('ierīces_tips');
-        $tabledata->problēmas_veids = $request->input('problēmas_veids');
-        $tabledata->piezīmes = $request->input('piezīmes');
+        $tabledata->date = $request->input('date');
+        $tabledata->time = $request->input('time');
+        $tabledata->person_id = $request->input('person_id');
+        $tabledata->source_id = $request->input('source_id');
+        $tabledata->txt = $request->input('txt');
+        $tabledata->obj_id = $request->input('obj_id');
+        $tabledata->device_id = $request->input('device_id');
+        $tabledata->issue_id = $request->input('issue_id');
+        $tabledata->note = $request->input('note');
 
         //$repairdata = new Repair;
         //$repairdata->report_id = Report::GetNextId();
@@ -108,22 +109,22 @@ class ReportsController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'ziņojuma_datums' => 'required',
+            'date' => 'required',
         ]);
 
         //Izveidot ierakstu
 
         $tabledata = Report::find($id);
-        $tabledata->ziņojuma_datums = $request->input('ziņojuma_datums');
-        $tabledata->laiks = $request->input('laiks');
+        $tabledata->date = $request->input('date');
+        $tabledata->time = $request->input('time');
         //$tabledata->nedēļa = $request->input('nedēļa');
-        $tabledata->atskaitošā_persona = $request->input('atskaitošā_persona');
-        $tabledata->avots = $request->input('avots');
-        $tabledata->ziņojuma_apraksts = $request->input('ziņojuma_apraksts');
-        $tabledata->atrašanās_vieta = $request->input('atrašanās_vieta');
-        $tabledata->ierīces_tips = $request->input('ierīces_tips');
-        $tabledata->problēmas_veids = $request->input('problēmas_veids');
-        $tabledata->piezīmes = $request->input('piezīmes');
+        $tabledata->person_id = $request->input('person_id');
+        $tabledata->source_id = $request->input('source_id');
+        $tabledata->txt = $request->input('txt');
+        $tabledata->obj_id = $request->input('obj_id');
+        $tabledata->device_id = $request->input('device_id');
+        $tabledata->issue_id = $request->input('issue_id');
+        $tabledata->note = $request->input('note');
         $tabledata->save();
 
         return redirect('/')->with('success', 'Ieraksts atjaunināts');

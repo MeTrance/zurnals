@@ -21,9 +21,15 @@ class RepairsController extends Controller
 
     public function index($id)
     {
+        // Pārbaude vai eksistē reports :: Jāpievieno error ziņa
+        if(Report::find($id) == null){
+            return redirect('/');
+        }else{
+            $repairdata = Repair::where('report_id', $id)->get();
+            return view('repairs.index')->with('repairdata', $repairdata)->with('report_id', $id);
+        }
         //$repairdata = Repair::orderBy('rīcības_datums', 'desc')->paginate(30);
-        $repairdata = Repair::where('report_id', $id)->get();
-        return view('repairs.index')->with('repairdata', $repairdata)->with('report_id', $id);
+
 
     }
 
@@ -54,12 +60,12 @@ class RepairsController extends Controller
         $repairdata = new Repair;
 
         $repairdata->report_id = $request->input('report_id');
-        $repairdata->veiktās_darbības = $request->input('veiktās_darbības');
-        $repairdata->stāvoklis = $request->input('stāvoklis');
-        $repairdata->rīcības_datums = $request->input('rīcības_datums');
-        $repairdata->rīcības_laiks = $request->input('rīcības_laiks');
-        $repairdata->darbības_persona = $request->input('darbības_persona');
-        $repairdata->piezīmes = $request->input('piezīmes');
+        $repairdata->txt = $request->input('txt');
+        $repairdata->state_id = $request->input('state_id');
+        $repairdata->date = $request->input('date');
+        $repairdata->time = $request->input('time');
+        $repairdata->person_id = $request->input('person_id');
+        $repairdata->note = $request->input('note');
         $repairdata->save();
 
         return redirect(route('repairs.index', $request->input('report_id')))->with('success', 'Ieraksts izveidots');
@@ -106,12 +112,12 @@ class RepairsController extends Controller
 
         $repairdata = Repair::find($id);
         //$repairdata->report_id = $request->input('report_id');
-        $repairdata->veiktās_darbības = $request->input('veiktās_darbības');
-        $repairdata->stāvoklis = $request->input('stāvoklis');
-        $repairdata->rīcības_datums = $request->input('rīcības_datums');
-        $repairdata->rīcības_laiks = $request->input('rīcības_laiks');
-        $repairdata->darbības_persona = $request->input('darbības_persona');
-        $repairdata->piezīmes = $request->input('piezīmes');
+        $repairdata->txt = $request->input('txt');
+        $repairdata->state_id = $request->input('state_id');
+        $repairdata->date = $request->input('date');
+        $repairdata->time = $request->input('time');
+        $repairdata->person_id = $request->input('person_id');
+        $repairdata->note = $request->input('note');
         $repairdata->save();
 
         return redirect(route('repairs.index', $repairdata->report_id))->with('success', 'Ieraksts atjaunināts');

@@ -6,48 +6,49 @@
             <thead>
             <tr>
                 <th class="alert-secondary">Ziņojuma datums</th>
-                <th>{{$data->ziņojuma_datums}}</th>
+                <th>{{$data->date}}</th>
             </tr>
             <tr>
                 <th class="alert-secondary">Laiks</th>
-                <th>{{date('H:i',strtotime($data->laiks))}}</th>
+                <th>{{date('H:i',strtotime($data->time))}}</th>
             </tr>
             <tr>
                 <th class="alert-secondary">Nedēļa</th>
-                <th>{{date('W',strtotime($data->ziņojuma_datums))}}</th>
+                <th>{{date('W',strtotime($data->date))}}</th>
             </tr>
             <tr>
                 <th class="alert-secondary">Atskaitošā persona</th>
-                <th>{{$data->atskaitošā_persona}}</th>
+                <th>{{$data->getUser->name}}</th>
             </tr>
             <tr>
                 <th class="alert-secondary">Avots</th>
-                <th>{{$data->avots}}</th>
+                <th>{{$data->getSource->name}}</th>
             </tr>
             <tr>
                 <th class="alert-secondary">Ziņojuma apraksts</th>
-                <th>{{$data->ziņojuma_apraksts}}</th>
+                <th>{{$data->txt}}</th>
             </tr>
             <tr>
                 <th class="alert-secondary">Atrašanās vieta</th>
-                <th>{{$data->atrašanās_vieta}}</th>
+                <th>{{$data->getLocation->name}}</th>
             </tr>
             <tr>
                 <th class="alert-secondary">Ierīces tips</th>
-                <th>{{$data->ierīces_tips}}</th>
+                <th>{{$data->getDevice->name}}</th>
             </tr>
             <tr>
                 <th class="alert-secondary">Problēmas veids</th>
-                <th>{{$data->problēmas_veids}}</th>
+                <th>{{$data->getIssue->name}}</th>
             </tr>
             <tr>
                 <th class="alert-danger">Piezīmes</th>
-                <th>{{$data->piezīmes}}</th>
+                <th>{{$data->note}}</th>
             </tr>
             </thead>
             <tbody>
 
             </tbody>
         </table>
+        <a href="/reports/{{$data->id}}/edit" class="btn btn-primary">Rediģēt</a>
     </div>
 @endsection

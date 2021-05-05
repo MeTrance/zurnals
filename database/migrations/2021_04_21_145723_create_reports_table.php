@@ -15,16 +15,15 @@ class CreateReportsTable extends Migration
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->id('id');
-            $table->date('ziņojuma_datums');
-            $table->time('laiks');
-            $table->char('atskaitošā_persona');
-            $table->char('avots');
-            $table->char('ziņojuma_apraksts');
-            $table->char('atrašanās_vieta');
-            $table->char('ierīces_tips');
-            $table->char('problēmas_veids');
-            $table->char('piezīmes');
-            $table->timestamps();
+            $table->date('date');
+            $table->time('time');
+            $table->unsignedBigInteger('person_id');
+            $table->unsignedBigInteger('source_id');
+            $table->char('txt');
+            $table->unsignedBigInteger('obj_id');
+            $table->unsignedBigInteger('device_id');
+            $table->unsignedBigInteger('issue_id');
+            $table->char('note');
         });
     }
 

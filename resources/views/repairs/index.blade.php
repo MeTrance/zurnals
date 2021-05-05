@@ -6,7 +6,6 @@
         <table class="table">
             <thead>
             <tr>
-                <th scope="col">Report_ID</th>
                 <th scope="col">Veiktās darbības</th>
                 <th scope="col">Stāvoklis</th>
                 <th scope="col">Rīcības datums</th>
@@ -23,14 +22,13 @@
             @if(count($repairdata) > 0)
                 @foreach($repairdata as $data)
                     <tr>
-                        <td>{{$data->report_id}}</td>
-                        <td>{{$data->veiktās_darbības}}</td>
-                        <td>{{$data->stāvoklis}}</td>
-                        <td><a href="{{route('repairs.show', $data->id)}}">{{$data->rīcības_datums}}</td>
-                        <td>{{date('H:i',strtotime($data->rīcības_laiks))}}</td>
-                        <td>{{date('W',strtotime($data->rīcības_datums))}}</td>
-                        <td>{{$data->darbības_persona}}</td>
-                        <td>{{$data->piezīmes}}</td>
+                        <td>{{$data->txt}}</td>
+                        <td>{{$data->getState->name}}</td>
+                        <td><a href="{{route('repairs.show', $data->id)}}">{{$data->date}}</td>
+                        <td>{{date('H:i',strtotime($data->time))}}</td>
+                        <td>{{date('W',strtotime($data->date))}}</td>
+                        <td>{{$data->getUser->name}}</td>
+                        <td>{{$data->note}}</td>
 
                         <td><a href="/repairs/{{$data->id}}/edit" class="btn btn-primary">Rediģēt</a></td>
                         <td>

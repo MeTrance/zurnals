@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Device;
 use Illuminate\Http\Request;
 
 class DevicesController extends Controller
@@ -13,7 +14,9 @@ class DevicesController extends Controller
      */
     public function index()
     {
-        //
+        $devicesdata = Device::orderBy('id', 'desc')->paginate(30);
+
+        return view('devices.index')->with('devicesdata', $devicesdata);
     }
 
     /**
@@ -23,7 +26,7 @@ class DevicesController extends Controller
      */
     public function create()
     {
-        //
+        return view('devices.create');
     }
 
     /**
@@ -34,7 +37,15 @@ class DevicesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+        ]);
+
+        $devicesdata = new Device;
+        $devicesdata->name = $request->input('name');
+        $devicesdata->save();
+
+        return redirect(route('devices.index'))->with('success', 'Ieraksts izveidots');
     }
 
     /**
@@ -56,7 +67,8 @@ class DevicesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $devicesdata = Device::find($id);
+        return view('devices.edit')->with('devicesdata', $devicesdata);
     }
 
     /**
@@ -68,7 +80,17 @@ class DevicesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+        ]);
+
+        //Izveidot ierakstu
+
+        $devicesdata = Device::find($id);
+        $devicesdata->name = $request->input('name');
+        $devicesdata->save();
+
+        return redirect(route('devices.index'))->with('success', 'Ieraksts atjaunināts');
     }
 
     /**
@@ -79,6 +101,9 @@ class DevicesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $devicesdata = Device::find($id);
+        $devicesdata->delete();
+
+        return redirect(route('devices.index'))->with('success', 'Ieraksts izdzēsts');
     }
 }

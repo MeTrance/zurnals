@@ -9,7 +9,17 @@ class Repair extends Model
 {
     use HasFactory;
 
-    public function report(){
-        return $this->hasMany(Report::class, "report_id", "id");
+    public $timestamps = false;
+
+    public function getReport(){
+        return $this->hasOne(\App\Models\Report::class, "id", "report_id");
+    }
+
+    public function getState(){
+        return $this->hasOne(State::class, 'id', 'state_id');
+    }
+
+    public function getUser(){
+        return $this->hasOne(User::class, 'id', 'person_id');
     }
 }

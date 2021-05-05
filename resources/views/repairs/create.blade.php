@@ -11,33 +11,33 @@
         </div>
 
         <div class="form-group">
-            {{Form::label('veiktās_darbības', 'Veiktās darbības')}}
-            {{Form::text('veiktās_darbības', '', ['class' => 'form-control', 'placeholder' => ''])}}
+            {{Form::label('txt', 'Veiktās darbības')}}
+            {{Form::text('txt', '', ['class' => 'form-control', 'placeholder' => ''])}}
         </div>
 
         <div class="form-group">
-            {{Form::label('stāvoklis', 'Stāvoklis')}}
-            {{ Form::select('stāvoklis', \App\Models\State::all()->pluck('name', 'id')->toArray(), null,['class'=>'form-control'])}}
+            {{Form::label('state_id', 'Stāvoklis')}}
+            {{ Form::select('state_id', \App\Models\State::all()->pluck('name', 'id')->toArray(), null,['class'=>'form-control'])}}
         </div>
 
         <div class="form-group">
-            {{Form::label('rīcības_datums', 'Rīcības datums')}}
-            {{Form::date('rīcības_datums', \Carbon\Carbon::now(), ['class' => 'form-control'])}}
+            {{Form::label('date', 'Rīcības datums')}}
+            {{Form::date('date', \Carbon\Carbon::now(), ['class' => 'form-control'])}}
         </div>
 
         <div class="form-group">
-            {{Form::label('rīcības_laiks', 'Rīcības laiks')}}
-            {{Form::time('rīcības_laiks', Carbon\Carbon::now()->format('H:i'), ['class' => 'form-control'])}}
+            {{Form::label('time', 'Rīcības laiks')}}
+            {{Form::time('time', Carbon\Carbon::now()->format('H:i'), ['class' => 'form-control'])}}
         </div>
 
         <div class="form-group">
-            {{Form::label('darbības_persona', 'Darbības persona')}}
-            {{Form::text('darbības_persona', '', ['class' => 'form-control'])}}
+            {{Form::label('person_id', 'Darbības persona')}}
+            {{ Form::select('person_id', \App\Models\User::all()->pluck('name', 'id')->toArray(), auth()->id(),['class'=>'form-control'])}}
         </div>
 
         <div class="form-group">
-            {{Form::label('piezīmes', 'Piezīmes')}}
-            {{Form::text('piezīmes', '', ['class' => 'form-control'])}}
+            {{Form::label('note', 'Piezīmes')}}
+            {{Form::text('note', '', ['class' => 'form-control'])}}
         </div>
 
         {{Form::submit('Saglabāt', ['class' => 'btn btn-primary'])}}
