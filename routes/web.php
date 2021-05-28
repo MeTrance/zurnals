@@ -44,3 +44,8 @@ Route::get('/repairs/{report_id}/create', [\App\Http\Controllers\RepairsControll
 Route::get('/repairs/{repairs}/show', [\App\Http\Controllers\RepairsController::class, 'show'])->name('repairs.show');
 Route::get('/repairs/{report_id}', [\App\Http\Controllers\RepairsController::class, 'index'])->name('repairs.index');
 
+
+// Admin Routes
+Route::namespace('\App\Http\Controllers\Admin')->prefix('admin')->name('admin.')->group(function(){
+    Route::resource('/users', UsersController::class, ['except' => ['show', 'create', 'store']]);
+});

@@ -46,6 +46,18 @@
                 <a class="btn btn-primary" href="{{route('states.create')}}" role="button">Pievienot</a>
             </div>
         </div>
+
+        </div>
+
+        <h3 style="padding-top: 20px;">User Management</h3>
+        <div class="card-group">
+
+            <div class="card" style="width: 18rem; margin-right: 10px">
+                <div class="card-body">
+                    <h5 class="card-title">Users</h5>
+                    <a class="btn btn-primary" href="{{route('admin.users.index')}}" role="button">Saraksts</a>
+                </div>
+            </div>
         </div>
     </div>
 @endsection
