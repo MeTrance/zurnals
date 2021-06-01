@@ -29,14 +29,17 @@
                         <td>{{date('W',strtotime($data->date))}}</td>
                         <td>{{$data->getUser->name}}</td>
                         <td>{{$data->note}}</td>
-
+                        @can('update', $data)
                         <td><a href="/repairs/{{$data->id}}/edit" class="btn btn-primary">Rediģēt</a></td>
+                        @endcan
+                        @can('delete', $data)
                         <td>
                             {!! Form::open(['action' => [[\App\Http\Controllers\RepairsController::class, 'destroy'], $data->id], 'method' => 'POST'])!!}
                             {!!Form::hidden('_method', 'DELETE')!!}
                             {!!Form::submit('Izdzēst', ['class' => 'btn btn-danger'])!!}
                             {!!Form::close()!!}
                         </td>
+                        @endcan
                     </tr>
 
                 @endforeach

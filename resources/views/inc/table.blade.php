@@ -30,12 +30,12 @@
                     <td>{{$data->getDevice->name}}</td>
                     <td>{{$data->getIssue->name}}</td>
                     <td>{{$data->note}}</td>
-                    <td><a href="/repairs/{{$data->id}}" class="btn btn-primary">Rīcība</a>
+                    <td>@can('create-repair')<a href="/repairs/{{$data->id}}" class="btn btn-primary">Rīcība</a>@endcan
 
                     </td>
-                    <td><a href="/reports/{{$data->id}}/edit" class="btn btn-primary">Rediģēt</a></td>
+                    <td>@can('update', $data)<a href="/reports/{{$data->id}}/edit" class="btn btn-primary">Rediģēt</a>@endcan</td>
                     <td>
-
+                        @can('delete', $data)
                         @if($data->getRepair->count() == 0)
                             {!! Form::open(['action' => [[\App\Http\Controllers\ReportsController::class, 'destroy'], $data->id], 'method' => 'POST'])!!}
                             {!!Form::hidden('_method', 'DELETE')!!}
@@ -44,10 +44,9 @@
                         @else
 
                         @endif
-
+                        @endcan
                     </td>
                 </tr>
-
             @endforeach
 
         @else

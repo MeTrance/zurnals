@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Repair;
 use App\Models\Report;
+use App\Policies\ReportPolicy;
 use Facade\Ignition\Tabs\Tab;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 
 class ReportsController extends Controller
@@ -14,6 +16,7 @@ class ReportsController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+
     }
     /**
      * Display a listing of the resource.
@@ -36,6 +39,10 @@ class ReportsController extends Controller
      */
     public function create()
     {
+        if(Gate::denies('create-report')){
+            return redirect(route('home'));
+        }
+
         return view('reports.create');
     }
 
@@ -95,6 +102,10 @@ class ReportsController extends Controller
      */
     public function edit($id)
     {
+        if(Gate::denies('edit-report')){
+            return redirect(route('home'));
+        }
+
         $tabledata = Report::find($id);
         return view('reports.edit')->with('data', $tabledata);
     }
@@ -108,6 +119,9 @@ class ReportsController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+
+
         $this->validate($request, [
             'date' => 'required',
         ]);
