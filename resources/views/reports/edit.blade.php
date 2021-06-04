@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="container">
-        <h3 style="margin-top: 20px">Rediģēt ierakstu</h3>
+        <h3 style="margin-top: 20px">Rediģēt ierakstu<a href="{{route('home')}}" class="btn btn-primary" style="margin-left: 10px;">Atpakaļ</a></h3>
         {!! Form::open(['action' => [[\App\Http\Controllers\ReportsController::class, 'update'], $data->id], 'method' => 'POST'])!!}
 
         <!-- Kā diez ievietot iepriekšējos laika datus -->
@@ -44,7 +44,7 @@
             {{Form::text('note', $data->note, ['class' => 'form-control', 'placeholder' => 'asd'])}}
         </div>
         {{Form::hidden('_method', 'PUT')}}
-        {{Form::submit('Saglabāt', ['class' => 'btn btn-primary'])}}
+        {{Form::submit('Saglabāt', ['class' => 'btn btn-primary', 'onclick' => "this.disabled=true;this.value='Sending, please wait...';this.form.submit();"])}}
         {!! Form::close() !!}
     </div>
 @endsection

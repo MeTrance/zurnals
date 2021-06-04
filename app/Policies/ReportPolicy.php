@@ -16,9 +16,8 @@ class ReportPolicy
      * @param  \App\Models\User  $user
      * @return mixed
      */
-    public function viewAny(User $user)
-    {
-        return true;
+    public function viewAny(User $user){
+
     }
 
     /**
@@ -30,7 +29,7 @@ class ReportPolicy
      */
     public function view(User $user, Report $report)
     {
-        return true;
+
     }
 
     /**
@@ -53,13 +52,7 @@ class ReportPolicy
      */
     public function update(User $user, Report $report)
     {
-        if($user->id === $report->person_id){
-            return true;
-        }elseif($user->hasRole('admin')){
-            return true;
-        }else{
-            return false;
-        }
+
     }
 
     /**
@@ -71,13 +64,7 @@ class ReportPolicy
      */
     public function delete(User $user, Report $report)
     {
-        if($user->id === $report->person_id){
-            return true;
-        }elseif($user->hasRole('admin')){
-            return true;
-        }else{
-            return false;
-        }
+
     }
 
     /**

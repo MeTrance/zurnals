@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h3 style="margin-top: 20px">Jauns ieraksts</h3>
+        <h3 style="margin-top: 20px">Jauns ieraksts<a href="{{route('repairs.index', $report_id)}}" class="btn btn-primary" style="margin-left: 10px;">Atpakaļ</a></h3>
         {!! Form::open(['action' => [[\App\Http\Controllers\RepairsController::class, 'store']], 'method' => 'POST'])!!}
 
         <div class="form-group">
@@ -40,7 +40,7 @@
             {{Form::text('note', '', ['class' => 'form-control'])}}
         </div>
 
-        {{Form::submit('Saglabāt', ['class' => 'btn btn-primary'])}}
+        {{Form::submit('Saglabāt', ['class' => 'btn btn-primary', 'onclick' => "this.disabled=true;this.value='Sending, please wait...';this.form.submit();"])}}
         {!! Form::close() !!}
     </div>
 @endsection

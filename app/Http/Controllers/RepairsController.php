@@ -22,9 +22,6 @@ class RepairsController extends Controller
 
     public function index($id)
     {
-        if(Gate::denies('view-repairs')){
-            return redirect(route('home'));
-        }
 
         // Pārbaude vai eksistē reports :: Jāpievieno error ziņa
         if(Report::find($id) == null){
@@ -45,9 +42,6 @@ class RepairsController extends Controller
      */
     public function create($report_id)
     {
-        if(Gate::denies('create-repair')){
-            return redirect(route('home'));
-        }
 
         return view('repairs.create')->with('report_id', $report_id);
     }
@@ -100,10 +94,6 @@ class RepairsController extends Controller
      */
     public function edit($id)
     {
-        if(Gate::denies('edit-repair')){
-            return redirect(route('home'));
-        }
-
         $repairdata = Repair::find($id);
         return view('repairs.edit')->with('data', $repairdata);
     }

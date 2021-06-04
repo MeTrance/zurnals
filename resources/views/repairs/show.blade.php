@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="container justify-content-center">
+        <h3 style="margin-top: 20px">Ieraksts<a href="{{route('repairs.index', $data->report_id)}}" class="btn btn-primary" style="margin-left: 10px;">Atpakaļ</a></h3>
         <table class="table" style="text-align: center; margin-top: 20px;">
             <thead>
             <tr>

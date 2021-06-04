@@ -3,8 +3,8 @@
 @section('content')
 
 
-<div class="table-responsive">
-    <table class="table">
+<div class="table-responsive table-bordered">
+    <table class="table" style="margin-bottom: 0;">
         <thead>
         <tr>
             <th scope="col">#</th>

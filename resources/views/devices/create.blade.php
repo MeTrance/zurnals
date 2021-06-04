@@ -10,7 +10,7 @@
             {{Form::text('name', '', ['class' => 'form-control', 'placeholder' => ''])}}
         </div>
 
-        {{Form::submit('Saglabāt', ['class' => 'btn btn-primary'])}}
+        {{Form::submit('Saglabāt', ['class' => 'btn btn-primary', 'onclick' => "this.disabled=true;this.value='Sending, please wait...';this.form.submit();"])}}
         {!! Form::close() !!}
     </div>
 

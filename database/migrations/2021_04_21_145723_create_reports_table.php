@@ -23,7 +23,7 @@ class CreateReportsTable extends Migration
             $table->unsignedBigInteger('obj_id');
             $table->unsignedBigInteger('device_id');
             $table->unsignedBigInteger('issue_id');
-            $table->char('note');
+            $table->char('note')->nullable('true');
         });
     }
 

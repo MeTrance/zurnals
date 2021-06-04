@@ -53,13 +53,7 @@ class RepairPolicy
      */
     public function update(User $user, Repair $repair)
     {
-        if($user->id === $repair->person_id){
-            return true;
-        }elseif($user->hasRole('admin')){
-            return true;
-        }else{
-            return false;
-        }
+
 
     }
 
@@ -72,13 +66,7 @@ class RepairPolicy
      */
     public function delete(User $user, Repair $repair)
     {
-        if($user->id === $repair->person_id){
-            return true;
-        }elseif($user->hasRole('admin')){
-            return true;
-        }else{
-            return false;
-        }
+
     }
 
     /**

@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+
     <div class="container justify-content-center">
+        <h3 style="margin-top: 20px">Ieraksts<a href="{{route('home')}}" class="btn btn-primary" style="margin-left: 10px;">Atpakaļ</a></h3>
         <table class="table" style="text-align: center; margin-top: 20px;">
             <thead>
             <tr>

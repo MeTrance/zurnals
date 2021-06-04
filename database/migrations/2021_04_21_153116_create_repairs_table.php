@@ -15,12 +15,12 @@ class CreateRepairsTable extends Migration
     {
         Schema::create('repairs', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('report_id')->nullable(true);
-            $table->char('txt')->nullable(true);
-            $table->unsignedBigInteger('state_id')->nullable(true);
-            $table->date('date')->nullable(true);
-            $table->time('time')->nullable(true);
-            $table->unsignedBigInteger('person_id')->nullable(true);
+            $table->unsignedBigInteger('report_id');
+            $table->char('txt');
+            $table->unsignedBigInteger('state_id');
+            $table->date('date');
+            $table->time('time');
+            $table->unsignedBigInteger('person_id');
             $table->char('note')->nullable(true);
 
             // Indexejam report, lai atrak querry

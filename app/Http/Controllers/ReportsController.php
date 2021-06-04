@@ -39,9 +39,6 @@ class ReportsController extends Controller
      */
     public function create()
     {
-        if(Gate::denies('create-report')){
-            return redirect(route('home'));
-        }
 
         return view('reports.create');
     }
@@ -102,9 +99,6 @@ class ReportsController extends Controller
      */
     public function edit($id)
     {
-        if(Gate::denies('edit-report')){
-            return redirect(route('home'));
-        }
 
         $tabledata = Report::find($id);
         return view('reports.edit')->with('data', $tabledata);

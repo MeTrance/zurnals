@@ -11,16 +11,8 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    @can('create-report')<a class="nav-link" href="{{route('reports.create')}}">Pievienot ierakstu</a>@endcan
-                </li>
-                <!--
-                <li class="nav-item">
-                    <a class="nav-link" href="route('repairs.index')">Rīcības</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="route('repairs.create')">Pievienot rīcību</a>
-                </li>-->
 
+                </li>
             </ul>
 
             <!-- Right Side Of Navbar -->
@@ -45,11 +37,11 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            @can('view-admin')
+
                             <a class="dropdown-item" href="{{route('admin')}}">
                                 Admin
                             </a>
-                            @endcan
+
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

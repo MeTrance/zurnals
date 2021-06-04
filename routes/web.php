@@ -16,22 +16,22 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 // Admin Route
-Route::get('/admin', [\App\Http\Controllers\PagesController::class, 'admin'])->name('admin')->middleware('can:view-admin');
+Route::get('/admin', [\App\Http\Controllers\PagesController::class, 'admin'])->name('admin');
 
 // Device Route
-Route::resource('/admin/categories/devices', \App\Http\Controllers\DevicesController::class, ['except' => ['show']])->middleware('can:view-admin');
+Route::resource('/admin/categories/devices', \App\Http\Controllers\DevicesController::class, ['except' => ['show']]);
 
 // Issue Route
-Route::resource('/admin/categories/issues', \App\Http\Controllers\IssuesController::class, ['except' => ['show']])->middleware('can:view-admin');
+Route::resource('/admin/categories/issues', \App\Http\Controllers\IssuesController::class, ['except' => ['show']]);
 
 // Location Route
-Route::resource('/admin/categories/locations', \App\Http\Controllers\LocationsController::class, ['except' => ['show']])->middleware('can:view-admin');
+Route::resource('/admin/categories/locations', \App\Http\Controllers\LocationsController::class, ['except' => ['show']]);
 
 // Source Route
-Route::resource('/admin/categories/sources', \App\Http\Controllers\SorucesController::class, ['except' => ['show']])->middleware('can:view-admin');
+Route::resource('/admin/categories/sources', \App\Http\Controllers\SorucesController::class, ['except' => ['show']]);
 
 // State Route
-Route::resource('/admin/categories/states', \App\Http\Controllers\StatesController::class, ['except' => ['show']])->middleware('can:view-admin');
+Route::resource('/admin/categories/states', \App\Http\Controllers\StatesController::class, ['except' => ['show']]);
 
 // Report Routes
 Route::get('/', [\App\Http\Controllers\ReportsController::class, 'index'])->name('home');
@@ -41,12 +41,12 @@ Route::get('/reports/{report}/edit', [\App\Http\Controllers\ReportsController::c
 // Repair Routes
 Route::resource('repairs', \App\Http\Controllers\RepairsController::class, ['except' => ['index', 'show', 'create', 'store']]);
 Route::post('/repairs', [\App\Http\Controllers\RepairsController::class, 'store']);
-Route::get('/repairs/{report_id}/create', [\App\Http\Controllers\RepairsController::class, 'create']);
+Route::get('/repairs/{report_id}/create', [\App\Http\Controllers\RepairsController::class, 'create'])->name('repairs.create');
 Route::get('/repairs/{repairs}/show', [\App\Http\Controllers\RepairsController::class, 'show'])->name('repairs.show');
-Route::get('/repairs/{report_id}', [\App\Http\Controllers\RepairsController::class, 'index'])->name('repairs.index')->middleware('can:view-repair');
+Route::get('/repairs/{report_id}', [\App\Http\Controllers\RepairsController::class, 'index'])->name('repairs.index');
 
 
 // Admin Routes
 Route::namespace('\App\Http\Controllers\Admin')->prefix('admin')->name('admin.')->group(function(){
-    Route::resource('/users', UsersController::class, ['except' => ['show', 'create', 'store']])->middleware('can:view-admin');
+    Route::resource('/users', UsersController::class, ['except' => ['show', 'create', 'store']]);
 });
