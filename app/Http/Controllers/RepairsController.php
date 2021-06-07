@@ -95,6 +95,9 @@ class RepairsController extends Controller
     public function edit($id)
     {
         $repairdata = Repair::find($id);
+
+        $this->authorize('update', $repairdata);
+
         return view('repairs.edit')->with('data', $repairdata);
     }
 

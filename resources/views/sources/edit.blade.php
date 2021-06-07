@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="container">
-        <h3 style="margin-top: 20px">Rediģēt ierakstu</h3>
+        <h3 style="margin-top: 20px">Rediģēt ierakstu<a href="{{route('sources.index')}}" class="btn btn-primary" style="margin-left: 10px">Atpakaļ</a></h3>
         {!! Form::open(['action' => [[\App\Http\Controllers\SorucesController::class, 'update'], $sourcesdata->id], 'method' => 'POST'])!!}
 
         <div class="form-group">

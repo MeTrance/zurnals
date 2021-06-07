@@ -1,10 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
-    <td><a href="{{route('states.create')}}" class="btn btn-primary">Pievienot stāvokli</a></td>
+
+    <div class="container">
+        <div class="row" style="margin-top: 10px; margin-bottom: 10px;">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <a href="{{route('admin')}}" class="btn btn-primary">Atpakaļ</a>
+                <a href="{{route('states.create')}}" class="btn btn-primary">Pievienot stāvokli</a>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
     <div class="table-responsive table-bordered">
         <table class="table" style="margin-bottom: 0;">
-            <thead>
+            <thead class="thead-light">
             <tr>
                 <th scope="col">Nosaukums</th>
                 <th scope="col"></th>
@@ -17,8 +26,8 @@
                 @foreach($statesdata as $data)
                     <tr>
                         <td>{{$data->name}}</td>
-                        <td><a href="{{route('states.edit', ['state' => $data->id])}}" class="btn btn-primary">Rediģēt</a></td>
-                        <td>
+                        <td style="width: 100px"><a href="{{route('states.edit', ['state' => $data->id])}}" class="btn btn-primary">Rediģēt</a></td>
+                        <td style="width: 100px">
 
                             <!-- Button trigger modal -->
                             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
@@ -63,5 +72,11 @@
             </tbody>
         </table>
     </div>
-    {{$statesdata->links()}}
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">{{$statesdata->links()}}</div>
+            <div class="col-md-4"></div>
+        </div>
+    </div>
+
 @endsection

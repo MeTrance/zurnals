@@ -1,8 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
-    <a href="{{route('home')}}" class="btn btn-primary">Atpakaļ</a>
-    <a href="{{route('repairs.create', $report_id)}}" class="btn btn-primary">Pievienot rīcību</a>
+    <div class="container" style="margin-top: 10px; margin-bottom: 10px;">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <a href="{{route('home')}}" class="btn btn-primary">Atpakaļ</a>
+                @can('repair')
+                <a href="{{route('repairs.create', $report_id)}}" class="btn btn-primary">Pievienot rīcību</a>
+                @endcan
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    </div>
+
     <div class="table-responsive table-bordered">
         <table class="table" style="margin-bottom: 0;">
             <thead class="thead-light">
@@ -30,16 +41,17 @@
                         <td>{{date('W',strtotime($data->date))}}</td>
                         <td>{{$data->getUser->name}}</td>
                         <td>{{$data->note}}</td>
-
-                        <td style="margin-right: 0; margin-left: 0; padding-right: 0; padding-left: 0;"><a href="/repairs/{{$data->id}}/edit" class="btn btn-primary">Rediģēt</a></td>
-
-                        <td style="margin-right: 0; margin-left: 0; padding-right: 0; padding-left: 0;">
+                        @can('update', $data)
+                        <td style="width: 100px"><a href="/repairs/{{$data->id}}/edit" class="btn btn-primary">Rediģēt</a></td>
+                        @endcan
+                        @can('delete', $data)
+                        <td style="width: 100px">
 
                             <!-- Button trigger modal -->
                             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
                                 Izdzēst
                             </button>
-
+                        @endcan
                             <!-- Modal -->
                             <div class="modal fade" data-backdrop="false" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="modalSmallLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -74,7 +86,7 @@
                 @endforeach
 
             @else
-
+                <!-- NO DATA -->
             @endif
             </tbody>
         </table>

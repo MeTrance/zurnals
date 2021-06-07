@@ -51,6 +51,8 @@
 
             </tbody>
         </table>
+        @can('update', $data)
         <a href="/reports/{{$data->id}}/edit" class="btn btn-primary">Rediģēt</a>
+        @endcan
     </div>
 @endsection

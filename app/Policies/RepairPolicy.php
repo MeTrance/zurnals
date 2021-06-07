@@ -18,7 +18,7 @@ class RepairPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return true;
     }
 
     /**
@@ -30,7 +30,7 @@ class RepairPolicy
      */
     public function view(User $user, Repair $repair)
     {
-        //
+        return true;
     }
 
     /**
@@ -53,7 +53,7 @@ class RepairPolicy
      */
     public function update(User $user, Repair $repair)
     {
-
+        return $user->id === $repair->person_id || $user->hasRole('admin');
 
     }
 
@@ -66,7 +66,7 @@ class RepairPolicy
      */
     public function delete(User $user, Repair $repair)
     {
-
+        return $user->id === $repair->person_id || $user->hasRole('admin');
     }
 
     /**

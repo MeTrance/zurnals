@@ -1,10 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-    <td><a href="{{route('devices.create')}}" class="btn btn-primary">Pievienot ierīci</a></td>
-    <div class="table-responsive table-bordered">
+    <div class="container" style="margin-top: 10px">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <a href="{{route('admin')}}" class="btn btn-primary">Atpakaļ</a>
+                <a href="{{route('devices.create')}}" class="btn btn-primary">Pievienot ierīci</a>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    <div class="table-responsive table-bordered" style="margin-top: 10px">
         <table class="table" style="margin-bottom: 0;">
-            <thead>
+            <thead class="thead-light">
             <tr>
                 <th scope="col">Nosaukums</th>
                 <th scope="col"></th>
@@ -19,8 +27,8 @@
                 @foreach($devicesdata as $data)
                     <tr>
                         <td>{{$data->name}}</td>
-                        <td><a href="{{route('devices.edit', ['device' => $data->id])}}" class="btn btn-primary">Rediģēt</a></td>
-                        <td>
+                        <td style="width: 100px"><a href="{{route('devices.edit', ['device' => $data->id])}}" class="btn btn-primary">Rediģēt</a></td>
+                        <td style="width: 100px">
 
 
 
@@ -66,11 +74,16 @@
                 @endforeach
 
             @else
-                <p>No data</p>
+
             @endif
             </tbody>
         </table>
     </div>
-    {{$devicesdata->links()}}
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">{{$devicesdata->links()}}</div>
+            <div class="col-md-4"></div>
+        </div>
+    </div>
 
 @endsection

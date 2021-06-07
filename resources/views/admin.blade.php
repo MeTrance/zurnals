@@ -1,61 +1,37 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container" style="margin-top: 20px">
-        <h3>Administrātora lapa</h3>
+    <div class="container">
+        <h3 style="margin-bottom: 20px; margin-top: 20px;">Administrātora lapa</h3>
+    </div>
 
-        <h3 style="padding-top: 20px;">Kategorijas</h3>
+    <div class="container" style="padding-left: 70px;">
+
+
         <div class="card-group">
 
-        <div class="card" style="width: 18rem; margin-right: 10px">
-            <div class="card-body">
-                <h5 class="card-title">Ierīces tips</h5>
-                <a class="btn btn-primary" href="{{route('devices.index')}}" role="button">Saraksts</a>
-                <a class="btn btn-primary" href="{{route('devices.create')}}" role="button">Pievienot</a>
+            <div class="card" style="width: 18rem; margin-right: 50%;">
+
+                <div class="list-group">
+                    <h3 class="list-group-item list-group-item-secondary" style="margin-bottom: 0;">Kategorijas</h3>
+                    <a href="{{route('devices.index')}}" class="list-group-item list-group-item-action">Ierīces tips</a>
+                    <a href="{{route('sources.index')}}" class="list-group-item list-group-item-action">Avots</a>
+                    <a href="{{route('locations.index')}}" class="list-group-item list-group-item-action">Atrašanās vieta</a>
+                    <a href="{{route('issues.index')}}" class="list-group-item list-group-item-action">Problēmas veids</a>
+                    <a href="{{route('states.index')}}" class="list-group-item list-group-item-action">Stāvoklis</a>
+                </div>
             </div>
-        </div>
 
-        <div class="card" style="width: 18rem; margin-right: 10px">
-            <div class="card-body">
-                <h5 class="card-title">Avots</h5>
-                <a class="btn btn-primary" href="{{route('sources.index')}}" role="button">Saraksts</a>
-                <a class="btn btn-primary" href="{{route('sources.create')}}" role="button">Pievienot</a>
-            </div>
-        </div>
 
-        <div class="card" style="width: 18rem; margin-right: 10px">
-            <div class="card-body">
-                <h5 class="card-title">Atrašanās vieta</h5>
-                <a class="btn btn-primary" href="{{route('locations.index')}}" role="button">Saraksts</a>
-                <a class="btn btn-primary" href="{{route('locations.create')}}" role="button">Pievienot</a>
-            </div>
-        </div>
-
-        <div class="card" style="width: 18rem; margin-right: 10px">
-            <div class="card-body">
-                <h5 class="card-title">Problēmas veids</h5>
-                <a class="btn btn-primary" href="{{route('issues.index')}}" role="button">Saraksts</a>
-                <a class="btn btn-primary" href="{{route('issues.create')}}" role="button">Pievienot</a>
-            </div>
-        </div>
-
-        <div class="card" style="width: 18rem; margin-right: 10px">
-            <div class="card-body">
-                <h5 class="card-title">Stāvoklis</h5>
-                <a class="btn btn-primary" href="{{route('states.index')}}" role="button">Saraksts</a>
-                <a class="btn btn-primary" href="{{route('states.create')}}" role="button">Pievienot</a>
-            </div>
-        </div>
 
         </div>
 
-        <h3 style="padding-top: 20px;">User Management</h3>
-        <div class="card-group">
+        <div class="card-group" style="">
 
-            <div class="card" style="width: 18rem; margin-right: 10px">
-                <div class="card-body">
-                    <h5 class="card-title">Users</h5>
-                    <a class="btn btn-primary" href="{{route('admin.users.index')}}" role="button">Saraksts</a>
+            <div class="card" style="width: 18rem; margin-right: 50%; margin-top: 20px">
+                <div class="list-group">
+                    <h3 class="list-group-item list-group-item-secondary" style="margin-bottom: 0;">Lietotāju iestatījumi</h3>
+                    <a href="{{route('admin.users.index')}}" class="list-group-item list-group-item-action">Lietotāju saraksts</a>
                 </div>
             </div>
         </div>

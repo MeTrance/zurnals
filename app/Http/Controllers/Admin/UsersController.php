@@ -17,6 +17,7 @@ class UsersController extends Controller
      *
      */
 
+
     public function index()
     {
         $users = User::all();
@@ -66,6 +67,7 @@ class UsersController extends Controller
      */
     public function destroy(User $user)
     {
+
         $user->roles()->detach();
         $user->delete();
 

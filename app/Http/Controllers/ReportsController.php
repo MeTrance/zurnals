@@ -16,7 +16,6 @@ class ReportsController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-
     }
     /**
      * Display a listing of the resource.
@@ -27,7 +26,7 @@ class ReportsController extends Controller
 
     public function index()
     {
-        $tabledata = Report::orderBy('date', 'desc')->paginate(30);
+        $tabledata = Report::orderBy('date', 'desc')->paginate(10);
 
         return view('index')->with('tabledata', $tabledata);
     }
@@ -99,8 +98,10 @@ class ReportsController extends Controller
      */
     public function edit($id)
     {
-
         $tabledata = Report::find($id);
+
+        $this->authorize('update', $tabledata);
+
         return view('reports.edit')->with('data', $tabledata);
     }
 

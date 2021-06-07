@@ -1,15 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container" style="margin-top: 10px">
         <div class="row">
             <div class="col-md-4"></div>
-            <div class="col-md-4"><a href="{{route('sources.create')}}" class="btn btn-primary">Pievienot avotu</a></div>
+            <div class="col-md-4">
+                <a href="{{route('admin')}}" class="btn btn-primary">Atpakaļ</a>
+                <a href="{{route('sources.create')}}" class="btn btn-primary">Pievienot avotu</a>
+            </div>
             <div class="col-md-4"></div>
         </div>
-    <div class="table-responsive table-bordered">
+    <div class="table-responsive table-bordered" style="margin-top: 10px;">
         <table class="table" style="margin-bottom: 0;">
-            <thead>
+            <thead class="thead-light">
             <tr>
                 <th scope="col">Nosaukums</th>
                 <th scope="col"></th>

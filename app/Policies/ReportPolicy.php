@@ -17,7 +17,7 @@ class ReportPolicy
      * @return mixed
      */
     public function viewAny(User $user){
-
+        return true;
     }
 
     /**
@@ -29,7 +29,7 @@ class ReportPolicy
      */
     public function view(User $user, Report $report)
     {
-
+        return true;
     }
 
     /**
@@ -52,7 +52,7 @@ class ReportPolicy
      */
     public function update(User $user, Report $report)
     {
-
+        return $user->id === $report->person_id || $user->hasRole('admin');
     }
 
     /**
@@ -64,7 +64,7 @@ class ReportPolicy
      */
     public function delete(User $user, Report $report)
     {
-
+        return $user->id === $report->person_id || $user->hasRole('admin');
     }
 
     /**

@@ -15,7 +15,7 @@ class SorucesController extends Controller
      */
     public function index()
     {
-        $sourcesdata = Source::orderBy('id', 'desc')->paginate(30);
+        $sourcesdata = Source::orderBy('id', 'desc')->paginate(10);
 
         return view('sources.index')->with('sourcesdata', $sourcesdata);
     }

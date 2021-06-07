@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h3 style="margin-top: 20px">Jauna atrašanās vieta</h3>
+        <h3 style="margin-top: 20px">Jauna atrašanās vieta<a href="{{route('locations.index')}}" class="btn btn-primary" style="margin-left: 10px">Atpakaļ</a></h3>
         {!! Form::open(['action' => [[\App\Http\Controllers\LocationsController::class, 'store']], 'method' => 'POST'])!!}
 
         <div class="form-group">

@@ -1,10 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-    <td><a href="{{route('issues.create')}}" class="btn btn-primary">Pievienot problēmas veidu</a></td>
+    <div class="container">
+    <div class="row" style="margin-bottom: 10px; margin-top: 10px;">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <a href="{{route('admin')}}" class="btn btn-primary">Atpakaļ</a>
+            <a href="{{route('issues.create')}}" class="btn btn-primary">Pievienot problēmas veidu</a>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
     <div class="table-responsive table-bordered">
         <table class="table" style="margin-bottom: 0;">
-            <thead>
+            <thead class="thead-light">
             <tr>
                 <th scope="col">Nosaukums</th>
                 <th scope="col"></th>
@@ -17,8 +25,8 @@
                 @foreach($issuesdata as $data)
                     <tr>
                         <td>{{$data->name}}</td>
-                        <td><a href="{{route('issues.edit', ['issue' => $data->id])}}" class="btn btn-primary">Rediģēt</a></td>
-                        <td>
+                        <td style="width: 100px"><a href="{{route('issues.edit', ['issue' => $data->id])}}" class="btn btn-primary">Rediģēt</a></td>
+                        <td style="width: 100px">
 
 
                             <!-- Button trigger modal -->
@@ -68,6 +76,11 @@
             </tbody>
         </table>
     </div>
-    {{$issuesdata->links()}}
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">{{$issuesdata->links()}}</div>
+            <div class="col-md-4"></div>
+        </div>
+    </div>
 
 @endsection

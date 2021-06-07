@@ -4,7 +4,7 @@
     <div class="container" style="margin-top: 20px">
     <div class="card">
         <div class="card-header">
-            <h3 style="margin-top: 20px">Rediģēt ierakstu</h3>
+            <h3 style="margin-top: 20px">Rediģēt ierakstu<a href="{{route('admin.users.index')}}" class="btn btn-primary" style="margin-left: 10px">Atpakaļ</a></h3>
             <p>Edit user {{$user->name}}</p>
         </div>
 

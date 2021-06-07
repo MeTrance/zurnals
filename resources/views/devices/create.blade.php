@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h3 style="margin-top: 20px">Jauns ierīces tips</h3>
+        <h3 style="margin-top: 20px">Jauns ierīces tips<a href="{{route('devices.index')}}" class="btn btn-primary" style="margin-left: 10px">Atpakaļ</a></h3>
         {!! Form::open(['action' => [[\App\Http\Controllers\DevicesController::class, 'store']], 'method' => 'POST'])!!}
 
         <div class="form-group">

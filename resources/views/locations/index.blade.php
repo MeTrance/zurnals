@@ -3,14 +3,17 @@
 @section('content')
 
     <div class="container">
-        <div class="row">
+        <div class="row" style="margin-top: 10px; margin-bottom: 10px;">
             <div class="col-md-4"></div>
-            <div class="col-md-4"><a href="{{route('locations.create')}}" class="btn btn-primary">Pievienot atrašanās vietu</a></div>
+            <div class="col-md-4">
+                <a href="{{route('admin')}}" class="btn btn-primary">Atpakaļ</a>
+                <a href="{{route('locations.create')}}" class="btn btn-primary">Pievienot atrašanās vietu</a>
+            </div>
             <div class="col-md-4"></div>
         </div>
     <div class="table-responsive table-bordered">
         <table class="table" style="margin-bottom: 0;">
-            <thead>
+            <thead class="thead-light">
             <tr>
                 <th scope="col">Nosaukums</th>
                 <th scope="col"></th>

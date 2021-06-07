@@ -52,7 +52,9 @@
 
             </tbody>
         </table>
+        @can('update', $data)
         <a href="/repairs/{{$data->id}}/edit" class="btn btn-primary">Rediģēt rīcību</a>
+        @endcan
     </div>
 @endsection
 

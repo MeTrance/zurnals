@@ -14,7 +14,7 @@ class StatesController extends Controller
      */
     public function index()
     {
-        $statesdata = State::orderBy('id', 'desc')->paginate(30);
+        $statesdata = State::orderBy('id', 'desc')->paginate(10);
 
         return view('states.index')->with('statesdata', $statesdata);
     }
