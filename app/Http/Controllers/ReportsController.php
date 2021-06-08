@@ -52,6 +52,13 @@ class ReportsController extends Controller
     {
         $this->validate($request, [
             'date' => 'required',
+            'time' => 'required',
+            'person_id' => 'required',
+            'source_id' => 'required',
+            'txt' => 'required|max:255',
+            'obj_id' => 'required',
+            'device_id' => 'required',
+            'issue_id' => 'required',
         ]);
 
         //Izveidot ierakstu
@@ -114,11 +121,15 @@ class ReportsController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-
-
         $this->validate($request, [
             'date' => 'required',
+            'time' => 'required',
+            'person_id' => 'required',
+            'source_id' => 'required',
+            'txt' => 'required|max:255',
+            'obj_id' => 'required',
+            'device_id' => 'required',
+            'issue_id' => 'required',
         ]);
 
         //Izveidot ierakstu
@@ -150,7 +161,7 @@ class ReportsController extends Controller
         $tabledata = Report::find($id);
         $tabledata->delete();
 
-        return redirect('/')->with('success', 'Ieraksts izdzēsts');
+        return redirect('/')->with('error', 'Ieraksts izdzēsts');
     }
 
 

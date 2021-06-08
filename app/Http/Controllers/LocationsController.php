@@ -104,6 +104,6 @@ class LocationsController extends Controller
         $locationsdata = Location::find($id);
         $locationsdata->delete();
 
-        return redirect(route('locations.index'))->with('success', 'Ieraksts izdzēsts');
+        return redirect(route('locations.index'))->with('error', 'Ieraksts izdzēsts');
     }
 }

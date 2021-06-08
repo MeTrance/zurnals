@@ -104,6 +104,6 @@ class DevicesController extends Controller
         $devicesdata = Device::find($id);
         $devicesdata->delete();
 
-        return redirect(route('devices.index'))->with('success', 'Ieraksts izdzēsts');
+        return redirect(route('devices.index'))->with('error', 'Ieraksts izdzēsts');
     }
 }

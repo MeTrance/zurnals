@@ -55,7 +55,12 @@ class RepairsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            //'veiktās_darbības' => 'required',
+            'report_id' => 'required',
+            'txt' => 'required|max:255',
+            'state_id' => 'required',
+            'date' => 'required',
+            'time' => 'required',
+            'person_id' => 'required',
         ]);
 
         //Izveidot ierakstu
@@ -111,7 +116,12 @@ class RepairsController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            //'ziņojuma_datums' => 'required',
+            'report_id' => 'required',
+            'txt' => 'required|max:255',
+            'state_id' => 'required',
+            'date' => 'required',
+            'time' => 'required',
+            'person_id' => 'required',
         ]);
 
         //Izveidot ierakstu
@@ -140,6 +150,6 @@ class RepairsController extends Controller
         $repairdata = Repair::find($id);
         $repairdata->delete();
 
-        return redirect(route('repairs.index', $repairdata->report_id))->with('success', 'Ieraksts izdzēsts');
+        return redirect(route('repairs.index', $repairdata->report_id))->with('error', 'Ieraksts izdzēsts');
     }
 }

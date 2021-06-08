@@ -105,6 +105,6 @@ class SorucesController extends Controller
         $sourcesdata = Source::find($id);
         $sourcesdata->delete();
 
-        return redirect(route('sources.index'))->with('success', 'Ieraksts izdzēsts');
+        return redirect(route('sources.index'))->with('error', 'Ieraksts izdzēsts');
     }
 }

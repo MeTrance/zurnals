@@ -104,6 +104,6 @@ class StatesController extends Controller
         $statesdata = State::find($id);
         $statesdata->delete();
 
-        return redirect(route('states.index'))->with('success', 'Ieraksts izdzēsts');
+        return redirect(route('states.index'))->with('error', 'Ieraksts izdzēsts');
     }
 }

@@ -50,6 +50,12 @@ class UsersController extends Controller
      */
     public function update(Request $request, User $user)
     {
+        $this->validate($request, [
+            'roles' => 'required',
+            'name' => 'required',
+            'email' => 'required',
+        ]);
+
     $user->roles()->sync($request->roles);
 
         $user->name = $request->name;

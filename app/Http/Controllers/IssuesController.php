@@ -105,6 +105,6 @@ class IssuesController extends Controller
         $issuesdata = Issue::find($id);
         $issuesdata->delete();
 
-        return redirect(route('issues.index'))->with('success', 'Ieraksts izdzēsts');
+        return redirect(route('issues.index'))->with('error', 'Ieraksts izdzēsts');
     }
 }

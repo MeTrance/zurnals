@@ -8,8 +8,9 @@
 
         <div class="form-group">
             {{Form::label('date', 'Ziņojuma datums')}}
-            {{Form::date('date', \Carbon\Carbon::now(), ['class' => 'form-control'])}}
+            {{Form::date('date', \Carbon\Carbon::now(), ['class' => 'form-control'] )}}
         </div>
+
         <div class="form-group">
             {{Form::label('time', 'Laiks')}}
             {{Form::time('time', Carbon\Carbon::now()->format('H:i'), ['class' => 'form-control'])}}
