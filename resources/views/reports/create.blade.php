@@ -21,7 +21,7 @@
         </div>
         <div class="form-group">
             {{Form::label('source_id', 'Avots')}}
-            {{ Form::select('source_id', \App\Models\Source::all()->pluck('name', 'id')->toArray(), null,['class'=>'form-control'])}}
+            {{ Form::select('source_id', \App\Models\Source::all()->pluck('name', 'id')->toArray(), null, ['placeholder' => '', 'class' => 'form-control'])}}
         </div>
         <div class="form-group">
             {{Form::label('txt', 'Ziņojuma apraksts')}}
@@ -29,17 +29,17 @@
         </div>
         <div class="form-group">
             {{Form::label('obj_id', 'Atrašanās vieta')}}
-            {{ Form::select('obj_id', \App\Models\Location::all()->pluck('name', 'id')->toArray(), null,['class'=>'form-control'])}}
+            {{ Form::select('obj_id', \App\Models\Location::all()->pluck('name', 'id')->toArray(), null,['placeholder' => '', 'class' => 'form-control'])}}
         </div>
 
 
         <div class="form-group">
             {{Form::label('device_id', 'Ierīces tips')}}
-            {{ Form::select('device_id', \App\Models\Device::all()->pluck('name', 'id')->toArray(), null,['class'=>'form-control'])}}
+            {{ Form::select('device_id', \App\Models\Device::all()->pluck('name', 'id')->toArray(), null,['placeholder' => '', 'class' => 'form-control'])}}
         </div>
         <div class="form-group">
             {{Form::label('issue_id', 'Problēmas veids')}}
-            {{ Form::select('issue_id', \App\Models\Issue::all()->pluck('name', 'id')->toArray(), null,['class'=>'form-control'])}}
+            {{ Form::select('issue_id', \App\Models\Issue::all()->pluck('name', 'id')->toArray(), null,['placeholder' => '', 'class' => 'form-control'])}}
         </div>
         <div class="form-group">
             {{Form::label('note', 'Piezīmes')}}

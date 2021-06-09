@@ -17,7 +17,7 @@
 
         <div class="form-group">
             {{Form::label('state_id', 'Stāvoklis')}}
-            {{ Form::select('state_id', \App\Models\State::all()->pluck('name', 'id')->toArray(), null,['class'=>'form-control'])}}
+            {{ Form::select('state_id', \App\Models\State::all()->pluck('name', 'id')->toArray(), null,['placeholder' => '', 'class' => 'form-control'])}}
         </div>
 
         <div class="form-group">
