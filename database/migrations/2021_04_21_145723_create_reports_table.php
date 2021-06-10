@@ -19,11 +19,11 @@ class CreateReportsTable extends Migration
             $table->time('time');
             $table->unsignedBigInteger('person_id');
             $table->unsignedBigInteger('source_id');
-            $table->char('txt');
+            $table->string('txt');
             $table->unsignedBigInteger('obj_id');
             $table->unsignedBigInteger('device_id');
             $table->unsignedBigInteger('issue_id');
-            $table->char('note')->nullable('true');
+            $table->string('note')->nullable('true');
         });
     }
 

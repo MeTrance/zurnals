@@ -71,7 +71,7 @@
                 @endforeach
 
             @else
-                <p>No data</p>
+                <!-- NO DATA -->
             @endif
             </tbody>
         </table>

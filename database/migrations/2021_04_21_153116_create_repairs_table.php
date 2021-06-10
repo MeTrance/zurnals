@@ -16,12 +16,12 @@ class CreateRepairsTable extends Migration
         Schema::create('repairs', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('report_id');
-            $table->char('txt');
+            $table->string('txt');
             $table->unsignedBigInteger('state_id');
             $table->date('date');
             $table->time('time');
             $table->unsignedBigInteger('person_id');
-            $table->char('note')->nullable(true);
+            $table->string('note')->nullable(true);
 
             // Indexejam report, lai atrak querry
             $table->index('report_id');

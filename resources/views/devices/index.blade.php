@@ -74,7 +74,7 @@
                 @endforeach
 
             @else
-
+                <!-- NO DATA -->
             @endif
             </tbody>
         </table>
