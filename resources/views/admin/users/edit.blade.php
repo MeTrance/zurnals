@@ -41,7 +41,7 @@
             </div>
         </div>
         <div class="form-group row">
-            <label for="roles" class="col-md-2 col-form-label text-md-right">Roles</label>
+            <label for="roles" class="col-md-2 col-form-label text-md-right">Lomas</label>
             <div class="col-md-6">
         @foreach($roles as $role)
             <div class="form-group">

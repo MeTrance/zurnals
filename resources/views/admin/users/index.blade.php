@@ -17,7 +17,7 @@
             <th scope="col">#</th>
             <th scope="col">Lietotājvārds</th>
             <th scope="col">E-pasts</th>
-            <th scope="col">Roles</th>
+            <th scope="col">Lomas</th>
             <th scope="col"></th>
             <th scope="col"></th>
         </tr>
@@ -31,13 +31,14 @@
                 <td>{{implode(', ', $user->roles()->get()->pluck('name')->toArray())}}</td>
                 <td style="width: 100px"><a href="{{route('admin.users.edit', $user->id)}}" class="btn btn-primary float-left">Rediģēt</a></td>
                 <td style="width: 100px">
+
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal{{$user->id}}">
                         Izdzēst
                     </button>
 
                     <!-- Modal -->
-                    <div class="modal fade" data-backdrop="false" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="modalSmallLabel" aria-hidden="true">
+                    <div class="modal fade" data-backdrop="false" id="deleteModal{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="modalSmallLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">

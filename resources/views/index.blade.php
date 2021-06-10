@@ -33,7 +33,6 @@
 
                 @if(count($tabledata) > 0)
                     @foreach($tabledata as $data)
-
                         <tr>
                             <td><a href="/reports/{{$data->id}}">{{$data->date}}</a></td>
                             <td>{{date('H:i',strtotime($data->time))}}</td>
@@ -55,7 +54,7 @@
                                 <!-- Button trigger modal -->
                                 @can('delete', $data)
                                 @if($data->getRepair->count() == 0)
-                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
+                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal{{$data->id}}">
                                         Izdzēst
                                     </button>
                             @else
@@ -63,8 +62,9 @@
                             @endif
                             @endcan
 
+
                             <!-- Modal -->
-                                <div class="modal fade" data-backdrop="false" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="modalSmallLabel" aria-hidden="true">
+                                <div class="modal fade" data-backdrop="false" id="deleteModal{{$data->id}}" tabindex="-1" role="dialog" aria-labelledby="modalSmallLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -80,19 +80,15 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Nē</button>
-
                                                 {!! Form::open(['action' => [[\App\Http\Controllers\ReportsController::class, 'destroy'], $data->id], 'method' => 'POST'])!!}
                                                 {!!Form::hidden('_method', 'DELETE')!!}
                                                 {!!Form::submit('Jā', ['class' => 'btn btn-danger'])!!}
                                                 {!!Form::close()!!}
-
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
-
-
-
                             </td>
                         </tr>
 
