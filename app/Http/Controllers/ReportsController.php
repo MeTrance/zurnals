@@ -26,7 +26,7 @@ class ReportsController extends Controller
 
     public function index()
     {
-        $tabledata = Report::orderBy('date', 'desc')->paginate(10);
+        $tabledata = Report::orderBy('date', 'desc')->orderBy('time', 'desc')->paginate(10);
 
         return view('index')->with('tabledata', $tabledata);
     }

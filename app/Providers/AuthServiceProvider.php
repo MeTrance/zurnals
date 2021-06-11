@@ -41,7 +41,7 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         Gate::define('view', function ($user){
-            return $user->hasAnyRoles(['admin']);
+            return $user->hasAnyRoles(['admin', 'viewer']);
         });
 
     }

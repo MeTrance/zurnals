@@ -27,7 +27,7 @@ class RepairsController extends Controller
         if(Report::find($id) == null){
             return redirect('/');
         }else{
-            $repairdata = Repair::where('report_id', $id)->get();
+            $repairdata = Repair::where('report_id', $id)->orderBy('date', 'desc')->orderBy('time', 'desc')->get();
             return view('repairs.index')->with('repairdata', $repairdata)->with('report_id', $id);
         }
         //$repairdata = Repair::orderBy('rīcības_datums', 'desc')->paginate(30);
