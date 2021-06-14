@@ -61,8 +61,6 @@
 
                             @endif
                             @endcan
-
-
                             <!-- Modal -->
                                 <div class="modal fade" data-backdrop="false" id="deleteModal{{$data->id}}" tabindex="-1" role="dialog" aria-labelledby="modalSmallLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -91,9 +89,7 @@
                                 </div>
                             </td>
                         </tr>
-
                     @endforeach
-
                 @else
                     <!-- NO DATA -->
                 @endif
@@ -107,5 +103,4 @@
                 <div class="col-md-4">
             </div>
         </div>
-
 @endsection

@@ -39,9 +39,4 @@ class Report extends Model
         return $this->hasOne(User::class, 'id', 'person_id');
     }
 
-    //public function scopeGetNextId(){
-    //    $statement = DB::select("show table status like 'reports'");
-    //    return $statement[0]->Auto_increment;
-    //}
-
 }
